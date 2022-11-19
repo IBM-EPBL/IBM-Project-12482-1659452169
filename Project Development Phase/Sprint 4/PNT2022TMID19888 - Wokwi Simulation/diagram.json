@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "HARIBOOBAALAN P N",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -1.33, "left": -76.67, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -18.63,
+      "left": 321.18,
+      "attrs": { "temperature": "80", "humidity": "100" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -32.82,
+      "left": -460.97,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-biaxial-stepper",
+      "id": "stepper1",
+      "top": -156.56,
+      "left": 123.13,
+      "attrs": {}
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -110.53, "left": -329.53, "attrs": {} },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": -250.54,
+      "left": -89.39,
+      "attrs": { "travelLength": "100" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v0" ] ],
+    [ "bz1:2", "esp:D13", "red", [ "v0" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "esp:D23", "stepper1:A2-", "orange", [ "h115.68", "v-35.1" ] ],
+    [ "esp:D22", "stepper1:A2+", "blue", [ "h123.46", "v-31.66" ] ],
+    [ "esp:D21", "stepper1:B2+", "violet", [ "h130.54", "v-51.36" ] ],
+    [ "esp:D19", "stepper1:B2-", "gray", [ "h137.61", "v-50.76" ] ],
+    [ "servo1:V+", "esp:VIN", "green", [ "h-16.14", "v185.14" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-45.57", "v182.38" ] ],
+    [ "servo1:PWM", "esp:D12", "green", [ "h-6.32", "v133.94" ] ],
+    [ "pot1:VCC", "esp:VIN", "green", [ "h-50.49", "v320.44" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v1.79", "h8.57", "v358.93" ] ],
+    [ "esp:D34", "pot1:SIG", "green", [ "h0" ] ]
+  ]
+}
